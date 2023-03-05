@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Auto Run HTML with Timeline</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			setTimeout(function() {
+				document.getElementById("first_element").style.display = "none";
+				document.getElementById("second_element").style.display = "block";
+			}, 6000); // 1 hour in milliseconds
+		}
+	</script>
+</head>
+<body>
+	<div id="first_element">
+		
+        <tr>
+			<td style="color:#8FBC8F;">9:00 AM</td>
+			<td><audio src="https://assets.mixkit.co/active_storage/sfx/995/995.wav" controls></audio></td>
+		</tr>
+	</div>
+	<div id="second_element" style="display:none">
+		
+        
+        <tr>
+			<td style="color:#8FBC8F;">10:00 AM</td>
+			<td><audio src="https://assets.mixkit.co/active_storage/sfx/995/995.wav" controls></audio></td>
+		</tr>
+		<tr>
+	</div>
+</body>
+</html>
