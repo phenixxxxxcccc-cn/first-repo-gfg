@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>College Bell Automation</title>
+  </head>
+  <body>
+    <h1>College Bell Automation</h1>
+    <p>The next bell will ring at <span id="next-bell"></span>.</p>
+    
+    <audio id="bell" src=" https://assets.mixkit.co/active_storage/sfx/995/995.wav"></audio>
+    
+    <script>
+      var bellTimes = [
+        {hour: 8, minute: 0},
+        {hour: 9, minute: 0},
+        {hour: 10, minute: 0},
+        {hour: 11, minute: 0},
+        {hour: 12, minute: 0},
+        {hour: 13, minute: 0},
+        {hour: 14, minute: 0},
+        {hour: 15, minute: 0},
+        {hour: 16, minute: 0},
+        {hour: 17, minute: 0},
+        {hour: 18, minute: 0},
+        {hour: 19, minute: 0},
+        {hour: 20, minute: 0},
+        {hour: 21, minute: 0},
+      ];
+      
+      var currentBellIndex = -1;
+      var nextBellTime = null;
+      var nextBellElement = document.getElementById("next-bell");
+      
+      function playBell() {
+        var bell = document.getElementById("bell");
+        bell.play();
+      }
+      
+      function updateNextBell() {
+        var now = new Date();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        
+        for (var i = 0; i < bellTimes.length; i++) {
+          if (bellTimes[i].hour > hour ||
+              (bellTimes[i].hour == hour && bellTimes[i].minute > minute)) {
+            nextBellTime = bellTimes[i];
+            currentBellIndex = i - 1;
+            break;
+          }
+        }
+        
+        if (nextBellTime) {
+          var nextBellDate = new Date();
+          nextBellDate.setHours(nextBellTime.hour);
+          nextBellDate.setMinutes(nextBellTime.minute);
+          nextBellElement.textContent = nextBellDate.toLocaleTimeString();
+          
+          var timeUntilNextBell = nextBellDate - now;
+          setTimeout(playBell, timeUntilNextBell);
+        } else {
+          nextBellElement.textContent = "No more bells today.";
+        }
+      }
+      
+      updateNextBell();
+      setInterval(updateNextBell, 60000);
+    </script>
+  </body>
+</html>

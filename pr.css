@@ -1,0 +1,66 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 20px;
+}
+
+p {
+	text-align: center;
+}
+
+.schedule {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.schedule div {
+	margin-bottom: 20px;
+}
+
+.schedule label {
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.schedule input[type="time"] {
+	width: 100px;
+}
+
+.schedule button {
+	margin-left: 10px;
+}
+
+.controls {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.controls button {
+	font-size: 24px;
+	margin: 0 10px;
+	padding: 10px;
+}
+
+.controls button:first-child {
+	background-color: green;
+	color: white;
+	border: none;
+}
+
+.controls button:last-child {
+	background-color: red;
+	color: white;
+	border: none;
+}
+
+audio {
+	display: none;
+}
